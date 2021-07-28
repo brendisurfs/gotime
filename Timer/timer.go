@@ -26,6 +26,7 @@ func NewTimeframe(workTime, breakTime, loopAmount int) Timeframe {
 func (tf *Timeframe) startWork() {
 	// currentTime := time.Now().Minute()
 	fmt.Println("*Pomodoro session starting*")
+
 	for tf.workTime > 0 {
 		fmt.Printf("%v minutes remaining\n", tf.workTime)
 		time.Sleep(time.Minute)

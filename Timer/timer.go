@@ -3,6 +3,10 @@
 
 //  NOTE: THESE ARE THE BASIC FUNCTIONS AND WILL BE MOVED TO COBRA EVENTUALLY.
 
+/* NOTES: The crew helped me figure that the events in the beginPomo()
+ might be all triggering at once. Will investigate!
+THANKS CARTER, LINH, WADE! */
+
 package timer
 
 import (
@@ -14,6 +18,7 @@ type Timeframe struct {
 	workTime, breakTime, loopAmount int
 }
 
+// constructs the timer function
 func NewTimeframe(workTime, breakTime, loopAmount int) Timeframe {
 	return Timeframe{
 		workTime:   workTime,
@@ -22,33 +27,33 @@ func NewTimeframe(workTime, breakTime, loopAmount int) Timeframe {
 	}
 }
 
-// start func: tf Timeframe is how the func inherits this.
+// start tf Timeframe is how the func inherits this.
 func (tf *Timeframe) startWork() {
-	// currentTime := time.Now().Minute()
 	fmt.Println("*Pomodoro session starting*")
 
 	for tf.workTime > 0 {
 		fmt.Printf("%v minutes remaining\n", tf.workTime)
-		time.Sleep(time.Minute)
+		time.Sleep(time.Second)
 		tf.workTime--
 	}
 }
 
+// starts the break timer
 func (tf *Timeframe) startBreak() {
 	fmt.Println("its break time!")
-
-	for tf.breakTime > 0 {
+	retime := &tf.breakTime
+	for *retime > 0 {
 		fmt.Printf("%v minutes remaining in break.\n", tf.breakTime)
-		time.Sleep(time.Minute)
+		time.Sleep(time.Second)
 		tf.breakTime--
 	}
 	fmt.Println("break time over, make it happen captain.")
 }
 
+// starts the timer
 func (tf *Timeframe) BeginPomo() {
 
 	// for the loop amount, do these things:
-
 	for tf.loopAmount > 0 {
 		tf.startWork()
 		tf.startBreak()

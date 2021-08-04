@@ -39,10 +39,11 @@ func (tf *Timeframe) startWork() {
 	bar := progressbar.Default(int64(tf.workTime))
 	i := 0
 	for i <= tf.workTime {
+		fmt.Printf("\n%v minutes into work\n", i)
 		bar.Add(1)
 		time.Sleep(time.Second)
-		fmt.Printf("%v minutes into work\n", i)
 		i++
+		Clear()
 	}
 }
 
@@ -62,7 +63,6 @@ func (tf *Timeframe) BeginPomo() {
 	i := 0
 	// for the loop amount, do these things:
 	for i < tf.loopAmount {
-		Clear()
 		fmt.Printf("this is loop #%v out of %v\n", i+1, tf.loopAmount)
 		tf.startWork()
 		tf.startBreak()

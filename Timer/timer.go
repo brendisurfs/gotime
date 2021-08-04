@@ -40,24 +40,24 @@ func (tf *Timeframe) startWork() {
 
 // starts the break timer
 func (tf *Timeframe) startBreak() {
+	t := 0
 	fmt.Println("its break time!")
-	retime := &tf.breakTime
-	for *retime > 0 {
+	for t < tf.breakTime {
 		fmt.Printf("%v minutes remaining in break.\n", tf.breakTime)
 		time.Sleep(time.Second)
-		tf.breakTime--
+		t++
 	}
 	fmt.Println("break time over, make it happen captain.")
 }
 
 // starts the timer
 func (tf *Timeframe) BeginPomo() {
-
+	i := 0
 	// for the loop amount, do these things:
-	for tf.loopAmount > 0 {
-		go tf.startWork()
-		go tf.startBreak()
-		tf.loopAmount--
+	for i < tf.loopAmount {
+		tf.startWork()
+		tf.startBreak()
+		i++
 	}
 	fmt.Println("good work, hope you worked hard but not too much!")
 }

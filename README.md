@@ -11,11 +11,11 @@ While counting down is fun and all, I realized that while doing work, counting d
 
 # Functionality (in progress)
 
-> work flag
-> break flag
-> loop number flag 
-> default times 
-> saved times 
-> desktop notification cards.
+- work flag
+- break flag
+- loop number flag 
+- default times 
+- saved times 
+- desktop notification cards.
 
 

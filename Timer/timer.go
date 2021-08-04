@@ -30,11 +30,11 @@ func NewTimeframe(workTime, breakTime, loopAmount int) Timeframe {
 // start tf Timeframe is how the func inherits this.
 func (tf *Timeframe) startWork() {
 	fmt.Println("*Pomodoro session starting*")
-
-	for tf.workTime > 0 {
+	i := 0
+	for i < tf.workTime {
 		fmt.Printf("%v minutes remaining\n", tf.workTime)
 		time.Sleep(time.Second)
-		tf.workTime--
+		i++
 	}
 }
 
@@ -43,7 +43,7 @@ func (tf *Timeframe) startBreak() {
 	t := 0
 	fmt.Println("its break time!")
 	for t < tf.breakTime {
-		fmt.Printf("%v minutes remaining in break.\n", tf.breakTime)
+		fmt.Printf("%v minutes into break\n", t)
 		time.Sleep(time.Second)
 		t++
 	}

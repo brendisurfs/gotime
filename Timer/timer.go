@@ -55,8 +55,8 @@ func (tf *Timeframe) BeginPomo() {
 
 	// for the loop amount, do these things:
 	for tf.loopAmount > 0 {
-		tf.startWork()
-		tf.startBreak()
+		go tf.startWork()
+		go tf.startBreak()
 		tf.loopAmount--
 	}
 	fmt.Println("good work, hope you worked hard but not too much!")

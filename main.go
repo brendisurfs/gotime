@@ -21,6 +21,6 @@ import (
 func main() {
 	fmt.Println("this is a pomodoro app for your terminal.")
 	// gotta figure a way to stop users from putting in floats for args HERE
-	ut := timer.NewTimeframe(1, 2, 4)
+	ut := timer.NewTimeframe(25, 2, 4)
 	ut.BeginPomo()
 }
